@@ -25,6 +25,7 @@ buildStdlib =
       addType "type Task r a = Task ((a -> r) -> r)"
       addType "type Parser a  = Parser (String -> Maybe (a, String))"
       addType "type Unit = Unit"
+      addType "type Redis r = Redis { read: (String -> Task r String), write: (String -> String -> Task r String) }"
       addBinding "id" "\\a -> a"
       addBinding "compose" "\\f -> \\g -> \\a -> f(g(a))"
       addBinding "not" "\\a -> if a then False else True"

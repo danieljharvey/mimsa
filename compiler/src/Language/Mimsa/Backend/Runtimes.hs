@@ -50,6 +50,11 @@ taskServerCode :: LBS.ByteString
 taskServerCode =
   LBS.fromStrict $(embedFile "static/runtimes/commonjs/task-server.js")
 
+-- these are saved in a file that is included in compilation
+redisTaskServerCode :: LBS.ByteString
+redisTaskServerCode =
+  LBS.fromStrict $(embedFile "static/runtimes/commonjs/redis-task-server.js")
+
 newtype RuntimeName
   = RuntimeName Text
   deriving newtype
@@ -143,6 +148,17 @@ taskServerRuntime =
       rtCode = Javascript taskServerCode
     }
 
+redisTaskServerRuntime :: Runtime Javascript
+redisTaskServerRuntime =
+  Runtime
+    { rtName = RuntimeName "redis-task-server",
+      rtDescription = "Runs an asynchronous Task Server with Redis",
+      rtMonoType =
+        fromRight (parseAndFormat monoTypeParser "(Redis r) -> String -> Task r { data: String, status: Int }"),
+      rtBackend = CommonJS,
+      rtCode = Javascript redisTaskServerCode
+    }
+
 runtimeIsValid :: Runtime a -> MonoType -> Either TypeError ()
 runtimeIsValid runtime mt =
   runTcMonad
@@ -162,7 +178,8 @@ runtimes =
       [ consoleRuntime,
         exportRuntime,
         replRuntime,
-        taskServerRuntime
+        taskServerRuntime,
+        redisTaskServerRuntime
       ]
 
 getValidRuntimes :: MonoType -> Map RuntimeName (Runtime Javascript)

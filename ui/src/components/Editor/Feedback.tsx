@@ -76,12 +76,13 @@ export const Feedback: React.FC<Props> = ({
                   runtime={rt.rtdName}
                   title={rt.rtdName}
                 />
-                {rt.rtdName === 'task-server' && (
-                  <Deploy
-                    exprHash={result.expression.edHash}
-                    title={result.bindingName}
-                  />
-                )}
+                {rt.rtdName === 'task-server' ||
+                  (rt.rtdName === 'redis-task-server' && (
+                    <Deploy
+                      exprHash={result.expression.edHash}
+                      title={result.bindingName}
+                    />
+                  ))}
               </>
             )
           )}
@@ -116,12 +117,13 @@ export const Feedback: React.FC<Props> = ({
                   runtime={rt.rtdName}
                   title={rt.rtdName}
                 />
-                {rt.rtdName === 'task-server' && (
-                  <Deploy
-                    exprHash={result.expression.edHash}
-                    title={'task-server'}
-                  />
-                )}
+                {rt.rtdName === 'task-server' ||
+                  (rt.rtdName === 'redis-task-server' && (
+                    <Deploy
+                      exprHash={result.expression.edHash}
+                      title={rt.rtdName}
+                    />
+                  ))}
               </FlexColumnSpaced>
             )
           )}
