@@ -17,12 +17,7 @@ jobs:
       - uses: mrkkrp/ormolu-action@v11
         with:
           pattern: |
-            backends/**/*.hs
-            benchmarks/**/*.hs
             builder/**/*.hs
-            compiler/**/*.hs
-            core/**/*.hs
-            repl/**/*.hs
             smol-backend/**/*.hs
             smol-core/**/*.hs
             smol-repl/**/*.hs
@@ -40,6 +35,6 @@ jobs:
       - name: "Run HLint"
         uses: rwe/actions-hlint-run@v2
         with:
-          path: '["backends/", "benchmarks/", "builder/", "compiler/", "core/", "repl/", "smol-backend/", "smol-core/", "smol-repl/"]'
+          path: '["builder/", "smol-backend/", "smol-core/", "smol-repl/"]'
           fail-on: warning
 

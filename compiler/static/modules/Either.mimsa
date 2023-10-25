@@ -1,5 +1,0 @@
-export type Either e a = Left e | Right a
-
-export def fmap f value = match value with
-                          Right a -> Right (f a)
-                          | Left e -> Left e

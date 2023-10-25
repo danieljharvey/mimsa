@@ -1,10 +1,5 @@
 packages:
-  benchmarks/benchmarks.cabal,
   builder/builder.cabal,
-  compiler/mimsa.cabal,
-  backends/backends.cabal,
-  repl/repl.cabal,
-  core/core.cabal,
   smol-backend/smol-backend.cabal,
   smol-core/smol-core.cabal,
   smol-repl/smol-repl.cabal,

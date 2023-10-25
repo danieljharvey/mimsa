@@ -1,1 +1,0 @@
-{ "apiPackage": "mimsa-api", "modelPackage": "mimsa-types", "supportsES6": true, "withSeparateModelsAndApi": true, "npmName": "mimsa-types" }

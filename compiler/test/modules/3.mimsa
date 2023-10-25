@@ -1,3 +1,0 @@
-type Maybe a = Just a | Nothing
-type Maybe b = Dogs | Horses
-

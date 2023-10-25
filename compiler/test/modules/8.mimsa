@@ -1,7 +1,0 @@
-def fullType (a: String) (b: String): String = a ++ b
-
-def partialTypeAndReturn (a: String) b : String = a ++ b
-
-def partialType (a: String) b = a ++ b
-
-def noType a b = a ++ b
